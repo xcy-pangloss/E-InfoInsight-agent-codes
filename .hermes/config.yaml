@@ -1,0 +1,38 @@
+# 项目级 Hermes 配置 — 评级系统网页管理
+# 仅在 e-InfoInsight-agent 项目目录下生效
+# 目的：禁止 Hermes 通过 terminal 修改本地源码
+
+approvals:
+  # 不可被 --yolo / mode=off 绕过的硬黑名单（在它们之前触发）
+  # 拦截所有会修改/覆盖/删除文件的命令
+  deny:
+    - "sed -i*"
+    - "sed --in-place*"
+    - "perl -i*"
+    - "ruby -i*"
+    - "awk -i inplace*"
+    - "cat > *"
+    - "cat >> *"
+    - "tee *"
+    - "cp *"
+    - "mv *"
+    - "install *"
+    - "truncate *"
+    - "rm *"
+    - "rmdir *"
+    - ">*"
+    - ">>*"
+    - "dd *of=*"
+    - "ed *"
+    - "ex *"
+    - "python -c *"
+    - "python3 -c *"
+    - "chmod *"
+    - "chown *"
+    - "git checkout *"
+    - "git reset --hard*"
+    - "git clean *"
+    - "git stash drop*"
+    - "pip install *"
+    - "bun add *"
+    - "npm install *"
